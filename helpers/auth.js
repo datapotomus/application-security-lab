@@ -33,8 +33,9 @@ async function login(username, password) {
 
             // this is an obviously derived scenario but the lesson it illustrates is to
             // never run a function with unvalidated user input, do not delete this line yet
-            const insecure_compare = eval('("'+ username +'" === "' + user.username + '")')
-            return insecure_compare    
+            // corrected insecure_function
+            const compare = username === user.username
+            return compare    
         })
 
         // if the user exists index will be a valid index >= 0
@@ -59,7 +60,8 @@ async function login(username, password) {
     } catch (err) {
         // a hacker can control the contents of err.message by injecting code into the
         // 'insecure_compare' function including a list of all the users
-        return {status: false, message: err.message}
+        //removed err.messaage
+        return {status: false, message: "You have failed...you will never become a doctor!"}
     }
 }
 
