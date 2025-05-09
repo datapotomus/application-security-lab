@@ -6,21 +6,17 @@ const server = express.Router();
 // This code will get called when users request any page or the "/" path
 // :filename defines a dynamic path that can be accessed in req.params.filename
 // // PART 4 > STEP 1: Uncomment the following line of code 
-  //The following code was uncommented 
   server.get('/:filename?', (req, res) => {
 // // PART 4 > STEP 2: Delete the following line of code 
-  // The folowing insecure code commented out-left in as reference
-   // server.get('(/*?)/:filename?', (req, res) => {
+    server.get('(/*?)/:filename?', (req, res) => {
 
     // get the filename from the request object
 
 // // Part 4 > Step 3: Uncomment the following line of code 
-    // The following code was uncommented
-      const filename = req.params?.filename
+     const filename = req.params?.filename
 
 // // Part 4 > Step 4: Delete the following line of code
-  // The following code was commented out-left in as reference
-   // const filepath = req.path.replace('/', '');
+    
 
 // // Part 4 > Step 5: Uncomment the following block of code
     // // only serve request to / or filenames ending with .html
@@ -50,8 +46,7 @@ const server = express.Router();
 // // Part 4 > Step 6: Uncomment the following line of code
          fs.readFile(`./pages/${filename || "homepage.html"}`)
 // // Part 4 > Step 7: Delete the following line of code
-   // The following code was commented out-left in as reference
-        // fs.readFile(`./${filepath || "/pages/homepage.html"}`)
+        
             .then((data) => {
 
                 // add HTTP 200 Status to the response header
@@ -71,7 +66,7 @@ const server = express.Router();
     
 // // Part 4 > Step 8: Uncomment the following line of code
      } else { // user requested a system file (possible hacker / crawler / bot)
-    /    res.status(404).send("Not Found") // don't give it to them
+         res.status(404).send("Not Found") // don't give it to them
      }
 })
 
