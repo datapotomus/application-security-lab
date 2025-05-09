@@ -14,7 +14,7 @@ const server = express.Router();
 
 // // Part 4 > Step 3: Uncomment the following line of code 
      const filename = req.params?.filename
-
+     console.log({filename});
 // // Part 4 > Step 4: Delete the following line of code
     
 
@@ -58,11 +58,11 @@ const server = express.Router();
 
                 // send the response (ends the response stream)  
                 res.end()
-            }).catch((error) => {
+            }).catch(error => {
                 // redirect to homepage if link doesn't exist
                 console.log("redirecting to homepage")
                 res.redirect('/');
-            })
+            });
     
 // // Part 4 > Step 8: Uncomment the following line of code
      } else { // user requested a system file (possible hacker / crawler / bot)
