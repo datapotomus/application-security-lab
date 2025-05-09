@@ -27,7 +27,7 @@ const server = express.Router();
      if (filename && filename.endsWith(".html") || !filename) {
 
     //     // define which pages the user can see without authenticating
-         const publicPages = [undefined, 'homepage.html', 'createUser.html']
+        const publicPages = [undefined, 'homepage.html', 'createUser.html'];
 
     //     // if user is requesting a restricted page
          if (publicPages.includes(filename) != true) {
@@ -36,7 +36,7 @@ const server = express.Router();
              if (!req.cookies.webAppCookie) {
 
     //             // redirect them to the login page
-                 res.redirect('/');
+                return res.redirect('/');
              }
          }
 
@@ -63,15 +63,15 @@ const server = express.Router();
 
                 // send the response (ends the response stream)  
                 res.end()
-            }).catch((error) => {
+            }).catch (error) => {
                 // redirect to homepage if link doesn't exist
                 console.log("redirecting to homepage")
                 res.redirect('/');
-            })
+            }
     
 // // Part 4 > Step 8: Uncomment the following line of code
      } else { // user requested a system file (possible hacker / crawler / bot)
-    /    res.status(404).send("Not Found") // don't give it to them
+        res.status(404).send("Not Found") // don't give it to them
      }
 })
 
